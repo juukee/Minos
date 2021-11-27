@@ -1,0 +1,24 @@
+{
+    "version": "2.0",
+    "$schema": "https://framework-1258016615.tcloudbaseapp.com/schema/latest.json",
+    "envId": "{{envId}}",
+    "framework": {
+      "name": "minos",
+      "plugins": {
+        "function": {
+          "use": "@cloudbase/framework-plugin-function",
+          "inputs": {
+            "functionRootPath": "functions",
+            "functions": [
+              {
+                "name": "minos",
+                "runtime": "Go1",
+                "handler": "main",
+                "functionDistPath": "minos/main"
+              }
+            ]
+          }
+        }
+      }
+    }
+  }
