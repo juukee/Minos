@@ -1,26 +1,21 @@
 package main
 import (
-    "context"
-    "fmt"
+    "github.com/gin-gonic/gin"
     "github.com/tencentyun/scf-go-lib/cloudfunction"
-    "github.com/tencentyun/scf-go-lib/functioncontext"
 )
 
-type DefineEvent struct {
-    // test event define
-    Key1 string `json:"key1"`
-    Key2 string `json:"key2"`
-}
-func hello(ctx context.Context, event DefineEvent) (string, error) {
-    lc, _ := functioncontext.FromContext(ctx)
-    fmt.Printf("ctx: %#v\n", lc) 
-    fmt.Printf("namespace: %s\n", lc.Namespace)
-    fmt.Printf("function name: %s\n", lc.FunctionName)
-    return fmt.Sprintf("Hello!......."), nil 
-}
-func main() {
-    
 
+func app() {
+	r := gin.Default()
+	r.GET("/ping", func(c *gin.Context) {
+		c.JSON(200, gin.H{
+			"message": "pong",
+		})
+	})
+	r.Run(":8080") // listen and serve on 0.0.0.0:8080 (for windows "localhost:8080")
+}
+
+func main() {
     // Make the handler available for Remote Procedure Call by Cloud Function
-    cloudfunction.Start(hello)
+    cloudfunction.Start(app)
 }
