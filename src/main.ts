@@ -1,4 +1,4 @@
-import express = require("express");
+import express = require('express');
 import { NestFactory } from '@nestjs/core';
 import {
   ExpressAdapter,
@@ -19,7 +19,7 @@ export async function bootstrap() {
    
   // 隐藏 x-powered-by: express header
   app.disable('x-powered-by');
-  console.log(process.env);
+  
   // 兼容云函数与本地开发
   if (process.env.NODE_ENV === 'development') {
     await app.listen(port);
