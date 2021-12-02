@@ -11,8 +11,7 @@
             "name": "minos",
             "path": "/",
             "entry": "app.js",
-            "installCommand": "npm install --prefer-offline --no-audit --progress=false",
-            "buildCommand": "npm run build",
+            "buildCommand": "npm install --prefer-offline --no-audit --progress=false && npm run build",
             "functionOptions": {
               "timeout": 5,
               "envVariables": {
