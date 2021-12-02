@@ -1,0 +1,26 @@
+{
+    "version": "2.0",
+    "envId": "{{envId}}",
+    "$schema": "https://framework-1258016615.tcloudbaseapp.com/schema/latest.json",
+    "framework": {
+      "name": "minos",
+      "plugins": {
+        "node": {
+          "use": "@cloudbase/framework-plugin-node",
+          "inputs": {
+            "name": "minos",
+            "path": "/",
+            "entry": "app.js",
+            "installCommand": "npm install --prefer-offline --no-audit --progress=false",
+            "buildCommand": "npm run build",
+            "functionOptions": {
+              "timeout": 5,
+              "envVariables": {
+                "NODE_ENV": "production"
+              }
+            }
+          }
+        }
+      }
+    }
+  }
