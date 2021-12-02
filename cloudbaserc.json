@@ -12,6 +12,7 @@
             "path": "/",
             "entry": "app.js",
             "buildCommand": "npm install --prefer-offline --no-audit --progress=false && npm run build",
+            "ignore": ".vscode",
             "functionOptions": {
               "timeout": 5,
               "envVariables": {

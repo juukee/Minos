@@ -33,6 +33,9 @@ export async function bootstrap() {
 // 开发模式下启动开发
 if (process.env.NODE_ENV === 'development') {
   bootstrap().then(() => {
+    // 兼容cloudstudio
+    console.log(`App listen on https://txvpto-dafdkt-${port}.preview.myide.io`);
+    // 本地环境
     console.log(`App listen on http://localhost:${port}`);
   });
 }
