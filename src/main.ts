@@ -1,4 +1,4 @@
-import express = require('express');
+import * as express from 'express';
 import { NestFactory } from '@nestjs/core';
 import {
   ExpressAdapter,
