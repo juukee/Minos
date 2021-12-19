@@ -1,6 +1,6 @@
 {
     "version": "2.0",
-    "envId": "{{envId}}",
+    "envId": "fscz-faca0",
     "$schema": "https://framework-1258016615.tcloudbaseapp.com/schema/latest.json",
     "framework": {
       "name": "minos",
