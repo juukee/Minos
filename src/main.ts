@@ -6,16 +6,22 @@ import {
 } from '@nestjs/platform-express';
 
 import { AppModule } from './app.module';
+import { MyConfigService } from './config/config.service';
 
 const expressApp = express();
 const adapter = new ExpressAdapter(expressApp);
 const port = process.env.PORT || 5000;
+// const port = MyConfigService.get<string>('database.port');
 
 export async function bootstrap() {
   const app = await NestFactory.create<NestExpressApplication>(
     AppModule,
     adapter,
   );
+  const configService = app.get(MyConfigService);
+  const port = configService.get<string>('env');
+  console.log(configService);
+  console.log(port);
 
   // 隐藏 x-powered-by: express header
   app.disable('x-powered-by');
