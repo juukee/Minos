@@ -1,8 +1,8 @@
 import { Module } from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
 import { MyConfigService } from './config.service';
-import databaseConfig from './config/databaseConfig';
 import appConfig from './config/app';
+import databaseConfig from './config/databaseConfig';
 
 @Module({
   imports: [
@@ -12,7 +12,7 @@ import appConfig from './config/app';
       expandVariables: true, // 扩展变量
       cache: true,
       isGlobal: true,
-      load: [databaseConfig, appConfig],
+      load: [appConfig, databaseConfig],
     }),
   ],
 
