@@ -3,6 +3,7 @@
 // import { MyLoggerService } from './commom/logger.service';
 import { NestExpressApplication } from '@nestjs/platform-express';
 import { MyConfigService } from './config/config.service';
+import { AllExceptionsFilter } from './core/any-exception.filter';
 
 // function initView(app: NestExpressApplication) {
 //     const configService: MyConfigService = app.get(MyConfigService);
@@ -28,6 +29,7 @@ export default async function bootstrap(app: NestExpressApplication) {
       const port = configService.get('port');
       // 隐藏 x-powered-by: express header
       app.disable('x-powered-by');
+      app.useGlobalFilters(new AllExceptionsFilter());
 
 //     const myLoggerService: MyLoggerService = app.get(MyLoggerService);
 //     myLoggerService.info({

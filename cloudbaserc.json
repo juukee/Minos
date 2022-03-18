@@ -13,8 +13,10 @@
             "entry": "app.js",
             "buildCommand": "npm install --prefer-offline --no-audit --progress=false && npm run build",
             "ignore": ".vscode",
+            "bumpVersion": true,
             "functionOptions": {
               "timeout": 5,
+              "runtime": "Nodejs12.16",
               "envVariables": {
                 "NODE_ENV": "production"
               }
