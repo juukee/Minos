@@ -10,12 +10,12 @@ import bootstrap from './bootstrap';
 const expressApp = express();
 const adapter = new ExpressAdapter(expressApp);
 
-async function main() { 
-    const app = await NestFactory.create<NestExpressApplication>(
-        AppModule,
-        adapter,
-      );
-      await bootstrap(app);
+async function main() {
+  const app = await NestFactory.create<NestExpressApplication>(
+    AppModule,
+    adapter,
+  );
+  await bootstrap(app);
 }
 
 main()

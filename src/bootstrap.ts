@@ -1,27 +1,7 @@
-// import nunjucks from 'nunjucks';
-// import path from 'path';
-// import { MyLoggerService } from './commom/logger.service';
 import { NestExpressApplication } from '@nestjs/platform-express';
 import { MyConfigService } from './config/config.service';
 import { AllExceptionsFilter } from './core/any-exception.filter';
 
-// function initView(app: NestExpressApplication) {
-//     const configService: MyConfigService = app.get(MyConfigService);
-//     const viewPath = path.join(__dirname, '../views');
-//     app.setBaseViewsDir(viewPath);
-//     app.setViewEngine('njk');
-//     const nunjucksEnv = nunjucks.configure(viewPath, {
-//         noCache: process.env.NODE_ENV === configService.get('database.DEVELOPMENT'),
-//         autoescape: true,
-//         express: app,
-//     });
-//     // for (const key of Object.keys(viewfilter)) {
-//     //     nunjucksEnv.addFilter(key, viewfilter[key]);
-//     // }
-//     // macro中不能访问当前 context , 将要访问的变量加到 global
-//     nunjucksEnv.addGlobal('env', configService.env);
-//     nunjucksEnv.addGlobal('jsPath', configService.static.jsPath);
-// }
 
 
 export default async function bootstrap(app: NestExpressApplication) {
@@ -60,3 +40,5 @@ export default async function bootstrap(app: NestExpressApplication) {
       console.log(`App listen on http://localhost:${port}`);
 
 }
+
+

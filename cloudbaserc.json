@@ -12,7 +12,10 @@
             "path": "/",
             "entry": "app.js",
             "buildCommand": "npm install --prefer-offline --no-audit --progress=false && npm run build",
-            "ignore": ".vscode",
+            "ignore": ["node_modules", "node_modules/**/*", ".git",".github/*","test"],
+            "servicePaths": {
+              "/": "/"
+            },
             "bumpVersion": true,
             "functionOptions": {
               "timeout": 5,
