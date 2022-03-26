@@ -1,5 +1,6 @@
 import pino from 'pino';
 import moment from 'moment';
+import { TcbService } from './tcb.service';
 
 const logger = pino();
 
@@ -9,6 +10,9 @@ class LogData {
 }
 
 export class MyLoggerService {
+  constructor(private readonly tcb: TcbService){
+   
+  }
   private writeLog(logMethod: string, logData: LogData) {
     logData = logData || { message: '', data: {} };
     (logData as any).timeLocal = moment().format('YYYY-MM-DD HH:mm:ss.SSS');

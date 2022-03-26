@@ -1,16 +1,13 @@
 import { NestExpressApplication } from '@nestjs/platform-express';
-import { MyConfigService } from './config/config.service';
+import { ConfigService } from '@nestjs/config';
 import { AllExceptionsFilter } from './core/any-exception.filter';
 
-
-
-export default async function bootstrap(app: NestExpressApplication) {
-      const configService = app.get(MyConfigService);
+export default async function bootstrap(app: NestExpressApplication) {   
+      const configService:ConfigService = app.get(ConfigService); 
       const port = configService.get('port');
       // 隐藏 x-powered-by: express header
       app.disable('x-powered-by');
       app.useGlobalFilters(new AllExceptionsFilter());
-
 //     const myLoggerService: MyLoggerService = app.get(MyLoggerService);
 //     myLoggerService.info({
 //         message: 'Starting Nest application...',
@@ -32,8 +29,6 @@ export default async function bootstrap(app: NestExpressApplication) {
       } else {
             await app.init();
       }
-      console.log(configService);
-      console.log(port);
       // 兼容cloudstudio
       console.log(`App listen on https://txvpto-dafdkt-${port}.preview.myide.io`);
       // 本地环境
