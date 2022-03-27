@@ -3,11 +3,13 @@ import { TcbService } from './tcb.service';
 import winston from 'winston';
 import path from 'path';
 
-const logPath = path.join(__dirname,'logs/')
+const logPath = path.join(__dirname,'../../logs/');
+
+console.log(logPath);
 const logger = winston.createLogger({
   level: 'info',
   format: winston.format.json(),
-  defaultMeta: { service: 'user-service' },
+  defaultMeta: { service: logPath },
   transports: [
     //
     // - Write all logs with importance level of `error` or less to `error.log`
@@ -34,9 +36,7 @@ class LogData {
 }
 
 export class MyLoggerService {
-  constructor(private readonly tcb: TcbService){
-   
-  }
+  constructor(private){}
   private writeLog(logMethod: string, logData: LogData) {
     logData = logData || { message: '', data: {} };
     (logData as any).timeLocal = moment().format('YYYY-MM-DD HH:mm:ss.SSS');
@@ -51,8 +51,23 @@ export class MyLoggerService {
     this.writeLog('info', logData);
   }
 
-  error(logData: LogData) {
+  async error(logData: LogData) {
     this.writeLog('error', logData);
+    console.log(TcbService);
+    // 获取数据库实例ID
+    // const EnvInfos = await TcbService.env.getEnvInfo();
+    // console.log(EnvInfos);
+// const Databases  = EnvInfo
+// console.log('Databases:', Databases)
+// const InsertedIds  =  this.tcb.commonService('flexdb').call({
+//   Action: 'PutItem',
+//   Param: {
+//     TableName: 'coll-1',
+//     MgoDocs: [logData],
+//     Tag: Databases[0].InstanceId
+//   }
+// })
+// console.log('InsertedIds:', InsertedIds)
   }
 
   warn(logData: LogData) {

@@ -10,11 +10,11 @@ export default async function bootstrap(app: NestExpressApplication) {
       app.disable('x-powered-by');
       app.useGlobalFilters(new AllExceptionsFilter());
     const myLoggerService: MyLoggerService = app.get(MyLoggerService);
-    myLoggerService.info({
+    myLoggerService.error({
         message: 'Starting Nest application...',
         data: {
             NODE_ENV: process.env.NODE_ENV,
-            port: configService.get<String>('port'),
+            port: port,
         },
     });
 
